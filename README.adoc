@@ -1,3 +1,151 @@
 # Governance-im-Cloud-Software-Lifecycle
- 1. Einführung
+ Kenana Saeed, HTWK Leipzig (WS24/25 MIM Modul Software Engineering, Prof. Andreas Both)
+:toc:
+:toc-title: Gliederung
+:imagesdir: img/
 
+== Einleitung
+Agile Methoden sind zum Eckpfeiler der modernen Softwareentwicklung geworden, insbesondere in Cloud-Umgebungen, wo Flexibilität und schnelle Bereitstellung von größter Bedeutung sind. Durch die Ermöglichung iterativer Entwicklung und häufiger Releases passt sich Agile nahtlos an die dynamische Natur der Cloud-basierten Softwarebereitstellung an. Der Fokus auf Geschwindigkeit und die Bereitstellung von Geschäftswert überschattet jedoch häufig kritische Sicherheits- und Compliance-Überlegungen, insbesondere in den frühen Phasen des Software Development Lifecycle (SDLC).
+
+Da Cloud-Umgebungen Komplexitäten wie dynamische Infrastruktur und Shared-Responsibility-Modelle einführen, müssen agile Teams ihre Praktiken weiterentwickeln, um Sicherheits- und Compliance-Herausforderungen effektiv zu bewältigen. Dazu gehören die Integration robuster Sicherheitsmaßnahmen in die Entwicklungsworkflows, die Gewährleistung angemessener Zugriffskontrollen und die proaktive Berücksichtigung von Compliance-Standards wie DSGVO und ISO 27001. Durch die Annahme einer "Security-First"-Mentalität können agile Teams die Vorteile der Cloud nutzen und gleichzeitig Risiken minimieren, um ein Gleichgewicht zwischen Geschwindigkeit und Sicherheit zu schaffen, das für den langfristigen Erfolg in der Cloud-basierten Entwicklung unerlässlich ist.
+
+== Sicherheits- und Compliance-Herausforderungen für agile Teams in der Cloud
+===Dynamische und schnelle Entwicklung
+Agile Methodik trägt zur Schaffung einer Umgebung schneller Releases bei. Da jedoch der Schwerpunkt stark auf der Bereitstellung von Produktwert innerhalb eines Sprints liegt, rückt die Sicherheit häufig in den Hintergrund bei der Entwicklung der Kernfunktionalität des Produkts in den frühen Phasen des Software Development Lifecycle (SDLC). Leider hat sich dies als Anti-Pattern erwiesen. Indem die Sicherheit in der frühen Phase der Softwareentwicklung vernachlässigt wird, entsteht eine "Security Debt", die später mit deutlich höherem Ressourcenaufwand behoben werden muss. Darüber hinaus übernimmt das Unternehmen während dieser Zeit mehr Haftungsrisiken, wenn der Sicherheitsfehler zu einer ausgenutzten Schwachstelle wird. Streben Sie danach, Sicherheit in agile Entwicklungsmethoden zu integrieren.
+
+Konzentrieren Sie sich nicht nur auf das schnelle Ausliefern von Code, sondern stellen Sie sicher, dass Protokolle zur Überprüfung von Sicherheitslücken eingehalten werden. Dies kann dazu beitragen, einen "Security-First"-Ansatz für agile Entwicklung zu fördern und potenzielle Sicherheitsrisiken zu vermeiden. Im Sinne von "agiler Sicherheit" sollten Sie nach Möglichkeit Sicherheitsüberprüfungen automatisieren und programmatisch bewerten, ob Sicherheitsprotokolle eingehalten wurden.
+
+===Entstehung neuer Bedrohungen
+Da sich die agile Entwicklung auf kontinuierliche Verbesserung und kleine Arbeitspakete konzentriert, können Releases neue Sicherheitsrisiken schaffen, die durch vorausschauendes Denken vermieden worden wären. Darüber hinaus werden agile Methoden manchmal fälschlicherweise als Ausrede verwendet, um sorgfältige Planung und Vorbereitung zu vermeiden. Teams, die sich ausschließlich auf die Entwicklung des nächsten neuen Releases konzentrieren, berücksichtigen möglicherweise nicht, wie sich die Bedrohungslandschaft mit dem neuen Release verändern kann (d. h. Entwickler sind keine Sicherheitsexperten). Infolge dieses Szenarios können Angreifer leichter alle versteckten Schwachstellen in einer agilen Entwicklungsumgebung ausnutzen.
+
+Ein weit verbreitetes Beispiel hierfür in der heutigen Softwarebranche ist die Verwendung von fest codierten Geheimnissen im Quellcode. Geheimnisse sind alle Arten von Daten, die für eine Organisation oder Person sensibel sind und nicht öffentlich zugänglich gemacht werden sollten. Dies können Passwörter, Zugriffsschlüssel, API-Token, Kreditkartennummern und mehr sein. Diese Praxis war vor zehn Jahren, als das Konzept von Cloud-Software als Service noch in den frühen Stadien der Markteinführung war, kein großes Problem. In den letzten zehn Jahren haben jedoch die meisten agilen Softwareentwicklungsbetriebe keinen Schritt zurückgetreten, um die Auswirkungen von SaaS und fest codierten Geheimnissen zu bewerten. Dies hat einen neuen Angriffsvektor geschaffen, bei dem böswillige Akteure versuchen, Zugang zu Quellcode-Management-Systemen und Quellcode zu erhalten, um durch das Stehlen von fest codierten Geheimnissen weiteren Zugriff auf andere Systeme (z. B. Build-Server) zu erlangen. Durch die myopische Fokussierung auf jeden einzelnen Sprint...
+
+===Unbegrenzter Zugriff auf Quellcode-Repositories & CI/CD-Pipelines
+Es ist nicht ungewöhnlich, einfach pauschale Berechtigungen und Autorisierungen für große Teile des Entwicklungsteams zu erteilen, insbesondere in kleineren Organisationen mit weniger ausgereiften Sicherheitspraktiken. Mehr Benutzer mit Zugriff auf Code-Repositories, Quellcode-Management-Systeme (SCMs), Build-Server, Artefakt-Registries und CI/CD-Pipelines bedeuten ein höheres Risiko für Ihren SDLC. Jeder überprivilegierte Benutzer stellt eine weitere Schwachstelle in Ihrer Verteidigung dar, die zu einem Ziel für Angreifer wird. Darüber hinaus lagern Softwareentwicklungsteams häufig einen Teil der Entwicklung an externe, beauftragte Entwicklungsteams auf Projektbasis aus. Oft behalten diese Auftragnehmer ihre Berechtigungen auch nach Projektabschluss bei. Die Risiken für die agile Softwareentwicklung sind besonders kritisch, wenn Administratorrechte zu großzügig vergeben werden.
+
+Steigern Sie Ihre agile Sicherheit, indem Sie Best Practices für die agile Entwicklung befolgen. Überprüfen Sie die Berechtigungs- und Autorisierungsprotokolle für Ihr Entwicklungsteam und die Systeme, die sie für die schnelle Softwareentwicklung verwenden. Wenden Sie das Prinzip der geringsten Rechte an, um sicherzustellen, dass jeder Benutzer nur über die Berechtigungen verfügt, die er für seine Arbeit benötigt.
+
+Wenn die Anzahl der Entwickler mit Zugriff auf Ihre Entwicklungspipelines zwischen 0 und 50 liegt, kann ein manueller Ansatz möglich und wünschenswert sein; für Teams mit mehr als 50 Entwicklern ist es jedoch am besten, ein Tool wie die Legit Security-Plattform zu verwenden, um die aktuellen Zugriffsrisiken in Ihren Entwicklungspipelines zu identifizieren, bevor ein Angreifer veraltete Konten kompromittiert, von denen Sie fälschlicherweise angenommen haben, dass sie keinen Zugriff mehr auf Ihre Pipelines haben.
+
+==2.2 Compliance-Anforderungen
+Compliance-Anforderungen sind Regeln, Standards und Vorschriften, die Organisationen einhalten müssen, um sicherzustellen, dass ihre Software, Prozesse und Systeme den gesetzlichen, sicherheitstechnischen und branchenspezifischen Erwartungen entsprechen. Diese Anforderungen schützen die Datensicherheit, den Datenschutz und die betriebliche Zuverlässigkeit. Hier eine Übersicht der genannten Beispiele:
+===DSGVO (Datenschutz-Grundverordnung)
+Eine Verordnung der Europäischen Union, die den Datenschutz für Personen in der EU regelt.
+Die DSGVO listet die Rechte der betroffenen Personen auf, d. h. die Rechte der Personen, deren personenbezogene Daten verarbeitet werden. Diese gestärkten Rechte geben den Einzelpersonen mehr Kontrolle über ihre personenbezogenen Daten, unter anderem durch:
+
+    Die Notwendigkeit einer eindeutigen Einwilligung der betroffenen Person in die Verarbeitung ihrer personenbezogenen Daten
+    Leichterer Zugang der betroffenen Person zu ihren personenbezogenen Daten
+    Das Recht auf Berichtigung, Löschung und "Vergessenwerden"
+    Das Recht auf Widerspruch, einschließlich der Verwendung personenbezogener Daten für "Profiling"-Zwecke
+    Das Recht auf Datenübertragbarkeit von einem Diensteanbieter zu einem anderen
+
+Die Verordnung legt auch die Verpflichtung für Verantwortliche (jene, die für die Verarbeitung von Daten verantwortlich sind) fest, den betroffenen Personen transparente und leicht zugängliche Informationen über die Verarbeitung ihrer Daten zur Verfügung zu stellen.
+
+Die DSGVO legt die allgemeinen Pflichten von Verantwortlichen und derjenigen, die personenbezogene Daten in ihrem Auftrag verarbeiten (Auftragsverarbeiter), fest.
+
+Dazu gehört die Verpflichtung, angemessene Sicherheitsmaßnahmen entsprechend dem Risiko der durchgeführten Datenverarbeitungsvorgänge zu implementieren.
+
+Verantwortliche sind in bestimmten Fällen auch verpflichtet, Meldungen über Datenschutzverletzungen zu erstatten. Alle öffentlichen Stellen und diejenigen Unternehmen, die bestimmte riskante Datenverarbeitungsvorgänge durchführen, müssen außerdem einen Datenschutzbeauftragten bestellen.
+
+===ISO 27001
+ISO 27001 ist die führende internationale Norm für Informationssicherheit. Sie wurde von der Internationalen Organisation für Normung (ISO) in Zusammenarbeit mit der Internationalen Elektrotechnischen Kommission (IEC) veröffentlicht. 1  Beide sind führende internationale Organisationen, die internationale Normen entwickeln.
+
+Die ISO ist eine unabhängige, nichtstaatliche internationale Organisation, die internationale Normen auf der Grundlage von Beiträgen von Vertretern nationaler Normungsorganisationen aus der ganzen Welt entwickelt. Das ISO 27001-Rahmenwerk ist ein Satz von Anforderungen für die Definition, Implementierung, den Betrieb und die Verbesserung eines Informationssicherheits-Managementsystems (ISMS) und ist die von der ISO anerkannte führende Norm für Informationssicherheit. Der Zweck dieses ISO-Sicherheitsrahmens besteht darin, die Informationen von Unternehmen systematisch und kosteneffektiv zu schützen, unabhängig von ihrer Größe oder Branche.
+
+Gemäß der ISO 27001-Definition besteht das grundlegende Ziel eines Informationssicherheits-Managementsystems darin, drei Aspekte von Informationen zu schützen:
+
+    Vertraulichkeit: Nur autorisierte Personen haben das Recht auf Zugriff auf Informationen.
+    Integrität: Nur autorisierte Personen können die Informationen ändern.
+    Verfügbarkeit: Die Informationen müssen autorisierten Personen jederzeit zugänglich sein.
+
+Es gibt eine ständig wachsende Anzahl von Gesetzen, Vorschriften und vertraglichen Anforderungen im Zusammenhang mit der Informationssicherheit. Die gute Nachricht ist, dass die meisten davon durch die Implementierung von ISO 27001 gelöst werden können. Diese Norm bietet Ihnen die perfekte Methodik, um alle diese Anforderungen zu erfüllen. Wenn Sie sich beispielsweise fragen, welche ISO-Sicherheitsnorm bei der Erstellung einer Sicherheitsrichtlinie einer Organisation helfen kann, um die EU-DSGVO oder NIS 2 zu erfüllen, lautet die Antwort ISO 27001. Sie können sich immer an die ISO wenden, wenn es um Informationssicherheit geht.
+
+Der Fokus von ISO 27001 liegt auf dem Schutz der Vertraulichkeit, Integrität und Verfügbarkeit der Informationen in einem Unternehmen. Dies geschieht, indem ermittelt wird, welche potenziellen Vorfälle den Informationen passieren könnten (d. h. Risikobewertung), und dann definiert wird, was getan werden muss, um solche Vorfälle zu verhindern (d. h. Risikominderung oder Risikobeschränkung).
+
+Daher basiert die Hauptphilosophie von ISO 27001 auf einem Prozess zur Risikosteuerung: Finden Sie heraus, wo die Risiken liegen, und behandeln Sie sie dann systematisch durch die Implementierung von Sicherheitskontrollen (oder Schutzmaßnahmen).
+
+===SOC 2
+SOC 2 wurde vom American Institute of Certified Public Accountants (AICPA) entwickelt und definiert Kriterien für die Verwaltung von Kundendaten basierend auf fünf "Trust Service Principles" - Sicherheit, Verfügbarkeit, Verarbeitungsintegrität, Vertraulichkeit und Datenschutz.
+SOC 2-Berichte sind für jedes Unternehmen einzigartig. Entsprechend spezifischer Geschäftspraktiken entwirft jedes Unternehmen seine eigenen Kontrollen, um eines oder mehrere der Vertrauensgrundsätze zu erfüllen.
+
+Diese internen Berichte liefern Ihnen (zusammen mit Regulierungsbehörden, Geschäftspartnern, Lieferanten usw.) wichtige Informationen darüber, wie Ihr Dienstleister Daten verwaltet.
+
+Es gibt zwei Arten von SOC-Berichten:
+
+    Typ I beschreibt die Systeme eines Anbieters und ob deren Design geeignet ist, um die relevanten Vertrauensgrundsätze zu erfüllen.
+    Typ II beschreibt die betriebliche Wirksamkeit dieser Systeme.
+
+Die Vertrauensgrundsätze lassen sich wie folgt aufschlüsseln:
+
+    1-Sicherheit
+
+Das Sicherheitsprinzip bezieht sich auf den Schutz von Systemressourcen vor unbefugtem Zugriff. Zugriffskontrollen helfen, potenziellen Systemmissbrauch, Diebstahl oder unbefugte Entfernung von Daten, Missbrauch von Software und unsachgemäße Änderung oder Offenlegung von Informationen zu verhindern.
+
+IT-Sicherheitswerkzeuge wie Netzwerk- und Web Application Firewalls (WAFs), Zwei-Faktor-Authentifizierung und Intrusion Detection sind hilfreich bei der Verhinderung von Sicherheitsverletzungen, die zu unbefugtem Zugriff auf Systeme und Daten führen können.
+
+    2-Verfügbarkeit
+
+Das Verfügbarkeitsprinzip bezieht sich auf die Zugänglichkeit des Systems, der Produkte oder Dienstleistungen wie in einem Vertrag oder einer Service Level Agreement (SLA) festgelegt. Daher wird das akzeptable Mindestleistungsniveau für die Systemverfügbarkeit von beiden Parteien festgelegt.
+
+Dieses Prinzip behandelt nicht die Systemfunktionalität und Benutzerfreundlichkeit, umfasst jedoch sicherheitsbezogene Kriterien, die sich auf die Verfügbarkeit auswirken können. Die Überwachung der Netzwerk- und Systemverfügbarkeit, Site Failover und das Sicherheitsvorfallmanagement sind in diesem Zusammenhang von entscheidender Bedeutung.
+
+    3-Verarbeitungsintegrität
+
+Das Prinzip der Verarbeitungsintegrität befasst sich damit, ob ein System seinen Zweck erfüllt (d. h. die richtigen Daten zum richtigen Preis zur richtigen Zeit liefert). Dementsprechend muss die Datenverarbeitung vollständig, gültig, genau, zeitnah und autorisiert sein.
+
+Verarbeitungsintegrität impliziert jedoch nicht unbedingt Datenintegrität. Wenn Daten vor der Eingabe in das System Fehler enthalten, liegt die Erkennung dieser Fehler normalerweise nicht in der Verantwortung der Verarbeitungseinheit. Die Überwachung der Datenverarbeitung in Verbindung mit Qualitätssicherungsverfahren kann dazu beitragen, die Verarbeitungsintegrität sicherzustellen.
+
+    4-Vertraulichkeit
+
+Daten gelten als vertraulich, wenn ihr Zugriff und ihre Offenlegung auf einen bestimmten Personenkreis oder Organisationen beschränkt ist. Beispiele hierfür können Daten sein, die nur für das Unternehmenspersonal bestimmt sind, sowie Geschäftspläne, geistiges Eigentum, interne Preislisten und andere Arten sensibler Finanzinformationen.
+
+Verschlüsselung ist eine wichtige Kontrolle zum Schutz der Vertraulichkeit während der Übertragung. Netzwerk- und Anwendungs-Firewalls können zusammen mit strengen Zugriffskontrollen verwendet werden, um die Verarbeitung oder Speicherung von Informationen auf Computersystemen zu schützen.
+
+    5-Datenschutz
+
+Das Datenschutzprinzip befasst sich mit der Erhebung, Verwendung, Speicherung, Offenlegung und Vernichtung personenbezogener Daten in Übereinstimmung mit der Datenschutzerklärung einer Organisation sowie mit den in den allgemein anerkannten Datenschutzgrundsätzen (GAPP) des AICPA festgelegten Kriterien.
+
+Personenbezogene Daten (PII) beziehen sich auf Details, die eine Person unterscheiden können (z. B. Name, Adresse, Sozialversicherungsnummer). Einige personenbezogene Daten im Zusammenhang mit Gesundheit, Rasse, Sexualität und Religion gelten ebenfalls als sensibel und erfordern in der Regel einen zusätzlichen Schutz. Es müssen Kontrollen eingerichtet werden, um alle personenbezogenen Daten vor unbefugtem Zugriff zu schützen.
+
+==Wie man Sicherheitsherausforderungen in agilen Teams mindern kann
+===Automatisierung von Sicherheitstests
+Automatisierte Sicherheitstests umfassen die Verwendung von Tools und Prozessen zur kontinuierlichen Überprüfung von Software auf Schwachstellen ohne manuellen Eingriff. Dadurch wird sichergestellt, dass Sicherheitsprüfungen konsistent und effizient während des gesamten Entwicklungszyklus durchgeführt werden, wodurch die Wahrscheinlichkeit der Einführung von Schwachstellen verringert und gleichzeitig die Entwicklungsgeschwindigkeit beibehalten wird.
+
+    *Statische Anwendungssicherheitstests (SAST) für die Codescanning.
+    *Dynamische Anwendungssicherheitstests (DAST) für Laufzeittests.
+    *Abhängigkeits- und Containerscanning (z. B. Snyk, Dependabot, Trivy).
+
+===Aufbau einer sicherheitsorientierten CI/CD-Pipeline
+Eine Continuous Integration/Continuous Deployment (CI/CD)-Pipeline ist eine Reihe automatisierter Prozesse, die es Entwicklern ermöglichen, Code effizient und zuverlässig zu erstellen, zu testen und bereitzustellen. Sie stellt sicher, dass neue Codeänderungen regelmäßig in die Hauptcodebasis (CI) integriert und automatisch in Produktions- oder Staging-Umgebungen bereitgestellt werden (CD).
+
+Wenn jedoch Schwachstellen nicht frühzeitig in diesem Prozess erkannt werden, entstehen Sicherheitsrisiken. Um dies zu beheben, integriert eine sicherheitsorientierte CI/CD-Pipeline Sicherheitsprüfungen in verschiedenen Phasen, um Probleme zu erkennen, bevor sie eskalieren.
+
+===Priorisierung von Sicherheit in agilen Prozessen
+In der agilen Entwicklung wird die Arbeit in Sprints unterteilt – kurze Zyklen, in denen sich Teams auf bestimmte Aufgaben konzentrieren, um inkrementellen Wert zu liefern. Um die Sicherheit zu priorisieren:
+
+    Nehmen Sie dedizierte Aufgaben für Sicherheitstests und das Patchen von Schwachstellen in jeden Sprint auf.
+
+    Behandeln Sie Sicherheit als gleichberechtigten Bestandteil des agilen Workflows, genau wie Features und Fehlerbehebungen.
+
+    Führen Sie regelmäßig Code-Reviews mit Sicherheitsfokus durch.
+
+Code-Reviews sind eine gängige agile Praxis zur Gewährleistung der Codequalität. Durch die Integration eines Sicherheitsfokus in diese Reviews können Teams Schwachstellen und unsichere Codierungspraktiken frühzeitig im Entwicklungsprozess erkennen.
+
+==Fazit
+Während agile Teams mit schnellen Releases und iterativer Entwicklung weiterhin die Grenzen der Innovation verschieben, ist es entscheidend, Sicherheit und Compliance als integrale Bestandteile des SDLC zu priorisieren. Die Vernachlässigung dieser Aspekte in frühen Phasen führt zu zunehmender "Security Debt", regulatorischen Risiken und der Exposition gegenüber sich entwickelnden Bedrohungslandschaften. Durch die Einführung von Strategien wie "Shifting Security Left", der Automatisierung von Schwachstellenprüfungen und der Implementierung sicherheitsorientierter CI/CD-Pipelines können Teams ihre Agilität bei gleichzeitiger Gewährleistung robuster Sicherheitsstandards beibehalten. Darüber hinaus ist die Förderung einer Kultur der Zusammenarbeit zwischen Entwicklern, Sicherheitsexperten und Compliance-Beauftragten für eine effektive Risikominderung unerlässlich.
+
+In einer Welt, in der Softwareverletzungen zu erheblichen finanziellen und reputativen Schäden führen können, ist das Gleichgewicht zwischen Geschwindigkeit und Sicherheit keine Option – es ist zwingend erforderlich. Durch die Integration von "Security-First"-Prinzipien in agile Praktiken können Teams qualitativ hochwertige Software liefern, die sowohl innovativ als auch widerstandsfähig gegenüber den Herausforderungen einer sich ständig verändernden Bedrohungslandschaft ist.
+
+== Literaturverzeichnis
+* [1]  An empirical study on the impact of Agile practices on software security (2019) - [A.H. Hussein et. al](https://www.sciencedirect.com/science/article/abs/pii/S0950584918301319)
+* [2]  DevOps security: A practical guide for securing your continuous delivery pipeline (2015) - [J. Humble & C. Farley](https://www.sciencedirect.com/science/article/pii/S187705091500931X) 
+* [3]  The security risks of continuous delivery (2015) - [P. Merle et. al](https://www.sciencedirect.com/science/article/pii/S1877050915030793)
+* [4] 10 Agile Software Development Security Concerns You Need to Know - [Legit Security](https://www.legitsecurity.com/blog/10-agile-software-development-security-concerns-you-need-to-know)
+* [5] What is ISO 27001? - [advisera.com](https://advisera.com/27001academy/what-is-iso-27001/)
+* [6] SOC 2 Compliance - [Imperva](https://www.imperva.com/learn/data-security/soc-2-compliance/)
+* [7] Cloud Security Alliance - [cloudsecurityalliance.org](https://cloudsecurityalliance.org/)
+* [8] GDPR Information Portal - [gdpr-info.eu](https://gdpr-info.eu/)
+* [9] GitHub Actions - [docs.github.com](https://docs.github.com/en/actions)
+* [10]  A holistic security framework for agile software development (2020) - [M. Gupta et. al](https://www.sciencedirect.com/science/article/pii/S0950584920302305)
+* [11] Agile Software Development - [mindsquare.de](https://mindsquare.de/knowhow/agile-softwareentwicklung/)
+░

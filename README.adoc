@@ -1,20 +1,3 @@
 # Governance-im-Cloud-Software-Lifecycle
 == 1. Einführung
 
-== 2. Sicherheits- und Compliance-Herausforderungen für agile Teams in der Cloud
-   === 2.1 Sicherheitsherausforderungen
-       ==== 2.1.1 Dynamische und schnelle Entwicklung
-       ==== 2.1.2 Entstehung neuer Bedrohungen
-       ==== 2.1.3 Unbegrenzter Zugriff auf Quellcode-Repositories & CI/CD-Pipelines
-   === 2.2 Compliance-Anforderungen
-       ==== 2.2.1 DSGVO (Datenschutz-Grundverordnung)
-       ==== 2.2.2 ISO 27001
-       ==== 2.2.3 SOC 2
-
-== 3. Wie man Sicherheitsherausforderungen in agilen Teams mindern kann
-   === 3.1 Automatisierung von Sicherheitstests
-   === 3.2 Aufbau einer sicherheitsfokussierten CI/CD-Pipeline
-   === 3.3 Priorisierung der Sicherheit in agilen Prozessen
-
-== 4. Fazit
-
